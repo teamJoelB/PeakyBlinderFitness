@@ -11,4 +11,6 @@ package fr.solutec.model;
  */
 public class User {
     
+    static int age;
+    
 }
