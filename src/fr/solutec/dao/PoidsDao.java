@@ -35,20 +35,24 @@ public class PoidsDao {
 
     public static List<Poids> getMyPoids(User user) throws SQLException {
         List<Poids> result = new ArrayList<>();
-        
-        
-        String sql = "SELECT * FROM poid WHERE id_iduser=?";
-        
-        Connection connexion = AccessDAO.getConnection();
-        PreparedStatement ordre = connexion.prepareStatement(sql);
-        
-        ordre.setInt(1, user.getId());
-        
-        
-        
-        
-        
 
+        String sql = "SELECT * FROM poid WHERE id_iduser=?";
+
+        Connection connexion = AccessDAO.getConnection();
+        PreparedStatement requette = connexion.prepareStatement(sql);
+
+        requette.setInt(1, user.getId());
+
+        ResultSet rs = requette.executeQuery(); //on stock la réponse de la requette sql dans rs
+
+        while (rs.next()) {
+            Poids p = new Poids();
+            p.setId(rs.getInt("idpoid"));
+            p.setPoids(rs.getDouble("valeurpoid"));
+            p.setDate(rs.getDate("datepoid"));
+            p.setUser(user);
+            result.add(p);
+        }
         return result;
     }
 
