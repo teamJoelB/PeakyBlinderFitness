@@ -22,7 +22,7 @@ import java.util.List;
 public class ObjectifDao {
     public static void addObjectif (User user, Objectif obj) throws SQLException {
         
-        String sql = "INSERT INTO objectif (dateobjectif, typeobjectif,deltapoid) VALUES (?,?,?)";
+        String sql = "INSERT INTO objectif (dateobjectif, typeobjectif,deltapoid,user_userid) VALUES (?,?,?,?)";
         
         Connection connexion = AccessDAO.getConnection();
 
@@ -31,7 +31,7 @@ public class ObjectifDao {
         ordre.setDate(1, obj.getDate());
         ordre.setString(2, obj.getType());
         ordre.setDouble(3, obj.getDelta());
-        
+        ordre.setInt(4, user.getId());
         ordre.execute();
 
     }
