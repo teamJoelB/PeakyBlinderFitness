@@ -39,7 +39,6 @@ public class FnExercice extends javax.swing.JFrame {
         btretourmenu = new javax.swing.JButton();
         comboTypeexercice = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
-        comboTempsexercice = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableexercice = new javax.swing.JTable();
@@ -70,13 +69,6 @@ public class FnExercice extends javax.swing.JFrame {
         comboTypeexercice.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Marche", "Course", "Sport Individul", "Sport d'équipe" }));
 
         jLabel1.setText("Pendant");
-
-        comboTempsexercice.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "30", "60", "90", "120", "150", "180", "210", "240" }));
-        comboTempsexercice.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboTempsexerciceActionPerformed(evt);
-            }
-        });
 
         jLabel3.setText("Minutes");
 
@@ -115,9 +107,7 @@ public class FnExercice extends javax.swing.JFrame {
                         .addComponent(spinnertempsex, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(comboTempsexercice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnewexercice)))
+                    .addComponent(btnewexercice))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -147,8 +137,6 @@ public class FnExercice extends javax.swing.JFrame {
                                 .addComponent(btretourmenu))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(btnewexercice)
-                                .addGap(125, 125, 125)
-                                .addComponent(comboTempsexercice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
@@ -199,15 +187,11 @@ public class FnExercice extends javax.swing.JFrame {
         
         try {
             ExerciceDao.addExercice(u, newex);
-            JOptionPane.showMessageDialog(rootPane, "Ajout de poids réussi !");
+            JOptionPane.showMessageDialog(rootPane, "Ajout d'exercice réussi !");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }  
     }//GEN-LAST:event_btnewexerciceActionPerformed
-
-    private void comboTempsexerciceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboTempsexerciceActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_comboTempsexerciceActionPerformed
 
     private void btrefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btrefreshActionPerformed
         DefaultTableModel model = new DefaultTableModel();
@@ -298,7 +282,6 @@ public class FnExercice extends javax.swing.JFrame {
     private javax.swing.JButton btnewexercice;
     private javax.swing.JButton btrefresh;
     private javax.swing.JButton btretourmenu;
-    private javax.swing.JComboBox<String> comboTempsexercice;
     private javax.swing.JComboBox<String> comboTypeexercice;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
