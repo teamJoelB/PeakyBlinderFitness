@@ -8,6 +8,11 @@ package fr.solutec.ihm;
 import fr.solutec.dao.ObjectifDao;
 import fr.solutec.model.Objectif;
 import fr.solutec.model.User;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -43,6 +48,8 @@ public class FnObjectif extends javax.swing.JFrame {
         tableobjectif = new javax.swing.JTable();
         combotype = new javax.swing.JComboBox<>();
         btrefresh = new javax.swing.JButton();
+        txtdateobj = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -94,6 +101,14 @@ public class FnObjectif extends javax.swing.JFrame {
             }
         });
 
+        txtdateobj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtdateobjActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("avant le");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -107,7 +122,12 @@ public class FnObjectif extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnewobjectif))
-                    .addComponent(combotype, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(combotype, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel2)
+                        .addGap(23, 23, 23)
+                        .addComponent(txtdateobj, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,7 +146,10 @@ public class FnObjectif extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(25, 25, 25)
-                        .addComponent(combotype, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(combotype, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtdateobj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnewobjectif)
@@ -165,23 +188,38 @@ public class FnObjectif extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnewobjectifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnewobjectifActionPerformed
-         User u = new User();
+       /*  User u = new User();
         u=FnConnexion.member;
        
        int poids = (Integer)spinnerpoidcible.getValue();
        String type = (String)combotype.getSelectedItem();
+       SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Date parsed = null;
+       String madate = txtdateobj.getText();
+       Objectif newobj = new Objectif();
+       try{
+           parsed = sdf.parse(madate);
+           java.sql.Date data = new java.sql.Date(parsed.getTime());
+           newobj.setDate(data);
+       } catch (Exception el) {
+           JOptionPane.showMessageDialog(rootPane, el.getMessage());
+       }
+        
        
-        Objectif newobj = new Objectif();
+       
+        
+       
         
        newobj.setDelta(poids);
        newobj.setType(type);
+       
       
         try {
             ObjectifDao.addObjectif(u, newobj);
             JOptionPane.showMessageDialog(rootPane, "Ajout d'objectif réussi !");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
-        }       
+        }       */
     }//GEN-LAST:event_btnewobjectifActionPerformed
 
     private void btretourmenuprincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btretourmenuprincipalActionPerformed
@@ -195,7 +233,7 @@ public class FnObjectif extends javax.swing.JFrame {
     }//GEN-LAST:event_combotypeActionPerformed
 
     private void btrefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btrefreshActionPerformed
-        /* DefaultTableModel model = new DefaultTableModel();
+        DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Date");
         model.addColumn("Type");
         model.addColumn("Delta Poids");
@@ -216,11 +254,11 @@ public class FnObjectif extends javax.swing.JFrame {
             tableobjectif.setModel(model);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
-        } */
+        }
     }//GEN-LAST:event_btrefreshActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-       /* DefaultTableModel model = new DefaultTableModel();
+       DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Date");
         model.addColumn("Type");
         model.addColumn("Delta Poids");
@@ -241,8 +279,12 @@ public class FnObjectif extends javax.swing.JFrame {
             tableobjectif.setModel(model);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
-        } */
+        }
     }//GEN-LAST:event_formWindowOpened
+
+    private void txtdateobjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtdateobjActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtdateobjActionPerformed
 
     /**
      * @param args the command line arguments
@@ -285,9 +327,11 @@ public class FnObjectif extends javax.swing.JFrame {
     private javax.swing.JButton btretourmenuprincipal;
     private javax.swing.JComboBox<String> combotype;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSpinner spinnerpoidcible;
     private javax.swing.JTable tableobjectif;
+    private javax.swing.JTextField txtdateobj;
     // End of variables declaration//GEN-END:variables
 }
