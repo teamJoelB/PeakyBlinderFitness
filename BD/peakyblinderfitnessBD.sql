@@ -1,19 +1,9 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-/**
- * Author:  esic
- * Created: 7 août 2019
- */
-
 -- phpMyAdmin SQL Dump
 -- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 07 août 2019 à 08:18
+-- Généré le :  mer. 07 août 2019 à 08:42
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -31,7 +21,7 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `peakyblinderfitness`
 --
-CREATE DATABASE IF NOT EXISTS `peakyblinderfitness` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+CREATE DATABASE IF NOT EXISTS `peakyblinderfitness` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `peakyblinderfitness`;
 
 -- --------------------------------------------------------
@@ -43,13 +33,13 @@ USE `peakyblinderfitness`;
 DROP TABLE IF EXISTS `exercice`;
 CREATE TABLE IF NOT EXISTS `exercice` (
   `idexercice` int(11) NOT NULL AUTO_INCREMENT,
-  `typeexercice` varchar(45) NOT NULL,
-  `tempsexercice` time NOT NULL,
-  `dateexercice` varchar(45) NOT NULL,
+  `typeexercice` varchar(45) CHARACTER SET latin1 NOT NULL,
+  `tempsexercice` int(11) NOT NULL,
+  `dateexercice` varchar(45) CHARACTER SET latin1 NOT NULL,
   `user_iduser` int(11) NOT NULL,
   PRIMARY KEY (`idexercice`),
   KEY `fk_exercice_user1_idx` (`user_iduser`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -60,13 +50,13 @@ CREATE TABLE IF NOT EXISTS `exercice` (
 DROP TABLE IF EXISTS `objectif`;
 CREATE TABLE IF NOT EXISTS `objectif` (
   `idobjectif` int(11) NOT NULL AUTO_INCREMENT,
-  `dateobjectif` date NOT NULL,
-  `typeobjectif` varchar(45) NOT NULL,
+  `dateobjectif` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `typeobjectif` varchar(45) CHARACTER SET latin1 NOT NULL,
   `deltapoid` double NOT NULL,
   `user_iduser` int(11) NOT NULL,
   PRIMARY KEY (`idobjectif`),
   KEY `fk_objectif_user1_idx` (`user_iduser`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -77,12 +67,11 @@ CREATE TABLE IF NOT EXISTS `objectif` (
 DROP TABLE IF EXISTS `poid`;
 CREATE TABLE IF NOT EXISTS `poid` (
   `idpoid` int(11) NOT NULL AUTO_INCREMENT,
-  `poiddate` varchar(45) NOT NULL,
-  `iduser` varchar(45) NOT NULL,
+  `datepoid` date DEFAULT NULL,
   `user_iduser` int(11) NOT NULL,
   PRIMARY KEY (`idpoid`),
-  KEY `fk_poid_user` (`user_iduser`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  KEY `fk_poid_user1_idx` (`user_iduser`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -93,15 +82,15 @@ CREATE TABLE IF NOT EXISTS `poid` (
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `iduser` int(11) NOT NULL AUTO_INCREMENT,
-  `nomuser` varchar(45) NOT NULL,
-  `prenomuser` varchar(45) NOT NULL,
-  `mdpuser` varchar(45) NOT NULL,
-  `sexeuser` varchar(45) DEFAULT NULL,
+  `nomuser` varchar(45) CHARACTER SET latin1 NOT NULL,
+  `prenomuser` varchar(45) CHARACTER SET latin1 NOT NULL,
+  `mdpuser` varchar(45) CHARACTER SET latin1 NOT NULL,
+  `sexeuser` varchar(45) CHARACTER SET latin1 DEFAULT NULL,
   `poidiniuser` double NOT NULL,
   `tailleuser` int(11) DEFAULT NULL,
   `ageuser` int(11) DEFAULT NULL,
   PRIMARY KEY (`iduser`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Contraintes pour les tables déchargées
@@ -123,7 +112,7 @@ ALTER TABLE `objectif`
 -- Contraintes pour la table `poid`
 --
 ALTER TABLE `poid`
-  ADD CONSTRAINT `fk_poid_user` FOREIGN KEY (`user_iduser`) REFERENCES `user` (`iduser`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_poid_user1` FOREIGN KEY (`user_iduser`) REFERENCES `user` (`iduser`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
