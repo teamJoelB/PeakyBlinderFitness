@@ -43,8 +43,18 @@ public class FnConnexion extends javax.swing.JFrame {
         jLabel2.setText("Password :");
 
         jButton1.setText("Connexion");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         btInscription.setText("Inscription");
+        btInscription.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btInscriptionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -103,6 +113,34 @@ public class FnConnexion extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btInscriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInscriptionActionPerformed
+       FnInscription fnI = new FnInscription();
+       this.setVisible(false);
+       fnI.setVisible(true);
+    }//GEN-LAST:event_btInscriptionActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        /* String login = txtlogin.getText();
+        String mdp = txtmdp.getText();
+        
+        try {
+            User member = UserDao.getByLoginPass(login, mdp);
+            
+            if(member != null){
+           // JOptionPane.showMessageDialog(rootPane, "Connexion réussie");
+           
+           FnPrincipale fnP = new FnPrincipale(member);
+           fnP.setVisible(true);
+           this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Connexion impossible");
+        }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e.getMessage());
+        }
+        */
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

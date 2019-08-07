@@ -9,12 +9,12 @@ package fr.solutec.ihm;
  *
  * @author ESIC
  */
-public class FnInscription extends javax.swing.JFrame {
+public class FnModificationProfil extends javax.swing.JFrame {
 
     /**
-     * Creates new form FnInscription
+     * Creates new form FnModificationProfil
      */
-    public FnInscription() {
+    public FnModificationProfil() {
         initComponents();
     }
 
@@ -44,12 +44,12 @@ public class FnInscription extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        btInscription = new javax.swing.JButton();
+        btvalidermodif = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         txtmail = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txtpassword = new javax.swing.JPasswordField();
-        btconnexion = new javax.swing.JButton();
+        btretourprofil = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -80,16 +80,21 @@ public class FnInscription extends javax.swing.JFrame {
 
         jLabel12.setText("*");
 
-        btInscription.setText("Finaliser votre inscription");
+        btvalidermodif.setText("Valider les modifications");
+        btvalidermodif.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btvalidermodifActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("E-mail : ");
 
         jLabel4.setText("Password :");
 
-        btconnexion.setText("Connexion");
-        btconnexion.addActionListener(new java.awt.event.ActionListener() {
+        btretourprofil.setText("Retour au profil");
+        btretourprofil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btconnexionActionPerformed(evt);
+                btretourprofilActionPerformed(evt);
             }
         });
 
@@ -126,7 +131,7 @@ public class FnInscription extends javax.swing.JFrame {
                     .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btInscription, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btvalidermodif, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(18, 18, 18)
@@ -135,7 +140,7 @@ public class FnInscription extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addGap(38, 38, 38)
                         .addComponent(txtmail, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btconnexion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btretourprofil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -181,13 +186,13 @@ public class FnInscription extends javax.swing.JFrame {
                                 .addComponent(txtpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel12))
                         .addGap(54, 54, 54)
-                        .addComponent(btInscription)))
+                        .addComponent(btvalidermodif)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(comboSexe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btconnexion))
+                    .addComponent(btretourprofil))
                 .addGap(108, 108, 108))
         );
 
@@ -215,11 +220,15 @@ public class FnInscription extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_comboSexeActionPerformed
 
-    private void btconnexionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btconnexionActionPerformed
-        FnConnexion fnC = new FnConnexion();
-              this.setVisible(false);
-              fnC.setVisible(true);
-    }//GEN-LAST:event_btconnexionActionPerformed
+    private void btretourprofilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btretourprofilActionPerformed
+        FnProfil fnPr = new FnProfil();
+        this.setVisible(false);
+        fnPr.setVisible(true);
+    }//GEN-LAST:event_btretourprofilActionPerformed
+
+    private void btvalidermodifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btvalidermodifActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btvalidermodifActionPerformed
 
     /**
      * @param args the command line arguments
@@ -238,27 +247,27 @@ public class FnInscription extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FnInscription.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FnModificationProfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FnInscription.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FnModificationProfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FnInscription.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FnModificationProfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FnInscription.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FnModificationProfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FnInscription().setVisible(true);
+                new FnModificationProfil().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btInscription;
-    private javax.swing.JButton btconnexion;
+    private javax.swing.JButton btretourprofil;
+    private javax.swing.JButton btvalidermodif;
     private javax.swing.JComboBox<String> comboSexe;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
