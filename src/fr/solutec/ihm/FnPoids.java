@@ -7,6 +7,7 @@ package fr.solutec.ihm;
 
 import fr.solutec.dao.PoidsDao;
 import fr.solutec.model.Poids;
+import fr.solutec.model.User;
 import java.util.Date;
 import javax.swing.JOptionPane;
 
@@ -141,7 +142,9 @@ public class FnPoids extends javax.swing.JFrame {
 
     private void btnouveaupoidsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnouveaupoidsActionPerformed
        
-       /* 
+        User u = new User();
+        u=FnConnexion.member;
+       
        int poids = (Integer)spinnernouveaupoid.getValue();
        
         Poids newpoids = new Poids();
@@ -149,11 +152,11 @@ public class FnPoids extends javax.swing.JFrame {
        newpoids.setPoids(poids);
       
         try {
-            PoidsDao.addPoids(newpoids);
+            PoidsDao.addPoids(u, newpoids);
             JOptionPane.showMessageDialog(rootPane, "Ajout de poids réussi !");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
-        }  */      
+        }       
     }//GEN-LAST:event_btnouveaupoidsActionPerformed
 
     /**

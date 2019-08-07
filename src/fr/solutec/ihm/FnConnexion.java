@@ -18,6 +18,7 @@ public class FnConnexion extends javax.swing.JFrame {
     /**
      * Creates new form FnConnexion
      */
+    public static User member;
     public FnConnexion() {
         initComponents();
     }
@@ -129,7 +130,7 @@ public class FnConnexion extends javax.swing.JFrame {
         String mdp = txtmdp.getText();
         
         try {
-            User member = UserDao.getByLoginPass(login, mdp);
+            member = UserDao.getByLoginPass(login, mdp);
             
             if(member != null){
            // JOptionPane.showMessageDialog(rootPane, "Connexion réussie");
