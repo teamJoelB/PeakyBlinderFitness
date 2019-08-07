@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 07 août 2019 à 08:42
+-- Généré le :  mer. 07 août 2019 à 09:16
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -33,9 +33,9 @@ USE `peakyblinderfitness`;
 DROP TABLE IF EXISTS `exercice`;
 CREATE TABLE IF NOT EXISTS `exercice` (
   `idexercice` int(11) NOT NULL AUTO_INCREMENT,
-  `typeexercice` varchar(45) CHARACTER SET latin1 NOT NULL,
+  `typeexercice` varchar(45) NOT NULL,
   `tempsexercice` int(11) NOT NULL,
-  `dateexercice` varchar(45) CHARACTER SET latin1 NOT NULL,
+  `dateexercice` varchar(45) NOT NULL,
   `user_iduser` int(11) NOT NULL,
   PRIMARY KEY (`idexercice`),
   KEY `fk_exercice_user1_idx` (`user_iduser`)
@@ -51,7 +51,7 @@ DROP TABLE IF EXISTS `objectif`;
 CREATE TABLE IF NOT EXISTS `objectif` (
   `idobjectif` int(11) NOT NULL AUTO_INCREMENT,
   `dateobjectif` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `typeobjectif` varchar(45) CHARACTER SET latin1 NOT NULL,
+  `typeobjectif` varchar(45) NOT NULL,
   `deltapoid` double NOT NULL,
   `user_iduser` int(11) NOT NULL,
   PRIMARY KEY (`idobjectif`),
@@ -82,14 +82,16 @@ CREATE TABLE IF NOT EXISTS `poid` (
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `iduser` int(11) NOT NULL AUTO_INCREMENT,
-  `nomuser` varchar(45) CHARACTER SET latin1 NOT NULL,
-  `prenomuser` varchar(45) CHARACTER SET latin1 NOT NULL,
-  `mdpuser` varchar(45) CHARACTER SET latin1 NOT NULL,
-  `sexeuser` varchar(45) CHARACTER SET latin1 DEFAULT NULL,
+  `nomuser` varchar(45) NOT NULL,
+  `prenomuser` varchar(45) NOT NULL,
+  `mdpuser` varchar(45) NOT NULL,
+  `sexeuser` varchar(45) DEFAULT NULL,
   `poidiniuser` double NOT NULL,
   `tailleuser` int(11) DEFAULT NULL,
   `ageuser` int(11) DEFAULT NULL,
-  PRIMARY KEY (`iduser`)
+  `mailuser` varchar(45) NOT NULL,
+  PRIMARY KEY (`iduser`),
+  UNIQUE KEY `mailuser_UNIQUE` (`mailuser`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
