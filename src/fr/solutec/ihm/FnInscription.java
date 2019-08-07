@@ -5,6 +5,10 @@
  */
 package fr.solutec.ihm;
 
+import fr.solutec.dao.UserDao;
+import fr.solutec.model.User;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ESIC
@@ -81,6 +85,11 @@ public class FnInscription extends javax.swing.JFrame {
         jLabel12.setText("*");
 
         btInscription.setText("Finaliser votre inscription");
+        btInscription.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btInscriptionActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("E-mail : ");
 
@@ -220,6 +229,38 @@ public class FnInscription extends javax.swing.JFrame {
               this.setVisible(false);
               fnC.setVisible(true);
     }//GEN-LAST:event_btconnexionActionPerformed
+
+    private void btInscriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInscriptionActionPerformed
+         String nom = txtNom.getText();
+       String prenom = txtPrenom.getText();
+       String login = txtmail.getText();
+       String mdp = txtpassword.getText();
+       int age = Integer.parseInt(txtAge.getText());
+       int taille = Integer.parseInt(txtTaille.getText());
+       double poids = Double.parseDouble(txtPoidsInitial.getText());
+       String sexe = (String)comboSexe.getSelectedItem();
+       
+      
+        User u = new User();
+        
+       u.setNom(nom);
+       u.setPrenom(prenom);
+       u.setMail(login);
+       u.setMdp(mdp);
+       u.setSexe(sexe);
+       u.setPoid(poids);
+       u.setTaille(taille);
+       u.setAge(age);
+       
+       
+        try {
+            UserDao.addUser(u);
+            JOptionPane.showMessageDialog(rootPane, "Inscription Réussie");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e.getMessage());
+        }
+       
+    }//GEN-LAST:event_btInscriptionActionPerformed
 
     /**
      * @param args the command line arguments

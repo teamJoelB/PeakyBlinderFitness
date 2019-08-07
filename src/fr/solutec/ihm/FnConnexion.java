@@ -5,6 +5,10 @@
  */
 package fr.solutec.ihm;
 
+import fr.solutec.dao.UserDao;
+import fr.solutec.model.User;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ESIC
@@ -32,7 +36,7 @@ public class FnConnexion extends javax.swing.JFrame {
         txtLogin = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         txtmdp = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
+        btconnexion = new javax.swing.JButton();
         btInscription = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -42,10 +46,10 @@ public class FnConnexion extends javax.swing.JFrame {
 
         jLabel2.setText("Password :");
 
-        jButton1.setText("Connexion");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btconnexion.setText("Connexion");
+        btconnexion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btconnexionActionPerformed(evt);
             }
         });
 
@@ -72,7 +76,7 @@ public class FnConnexion extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btInscription, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btconnexion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtmdp))))
                 .addContainerGap(426, Short.MAX_VALUE))
         );
@@ -88,7 +92,7 @@ public class FnConnexion extends javax.swing.JFrame {
                     .addComponent(txtmdp)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(btconnexion)
                 .addGap(17, 17, 17)
                 .addComponent(btInscription)
                 .addContainerGap(162, Short.MAX_VALUE))
@@ -120,8 +124,8 @@ public class FnConnexion extends javax.swing.JFrame {
        fnI.setVisible(true);
     }//GEN-LAST:event_btInscriptionActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        /* String login = txtlogin.getText();
+    private void btconnexionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btconnexionActionPerformed
+         String login = txtLogin.getText();
         String mdp = txtmdp.getText();
         
         try {
@@ -130,17 +134,17 @@ public class FnConnexion extends javax.swing.JFrame {
             if(member != null){
            // JOptionPane.showMessageDialog(rootPane, "Connexion réussie");
            
-           FnPrincipale fnP = new FnPrincipale(member);
+           FnPrincipale fnP = new FnPrincipale();
            fnP.setVisible(true);
            this.setVisible(false);
         } else {
-            JOptionPane.showMessageDialog(rootPane, "Connexion impossible");
+                JOptionPane.showMessageDialog(rootPane, "Connexion impossible");
         }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }
-        */
-    }//GEN-LAST:event_jButton1ActionPerformed
+        
+    }//GEN-LAST:event_btconnexionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -179,7 +183,7 @@ public class FnConnexion extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btInscription;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btconnexion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
