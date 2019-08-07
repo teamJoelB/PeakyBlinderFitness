@@ -7,7 +7,10 @@ package fr.solutec.ihm;
 
 import fr.solutec.dao.ExerciceDao;
 import fr.solutec.model.Exercice;
+import fr.solutec.model.User;
+import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -40,8 +43,14 @@ public class FnExercice extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableexercice = new javax.swing.JTable();
+        btrefresh = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         btnewexercice.setText("Entrer un nouvel exercice");
         btnewexercice.addActionListener(new java.awt.event.ActionListener() {
@@ -83,6 +92,13 @@ public class FnExercice extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tableexercice);
 
+        btrefresh.setText("Raffraichir");
+        btrefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btrefreshActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -101,8 +117,14 @@ public class FnExercice extends javax.swing.JFrame {
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 146, Short.MAX_VALUE)
-                .addComponent(btretourmenu))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 140, Short.MAX_VALUE)
+                        .addComponent(btretourmenu))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btrefresh)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,7 +147,11 @@ public class FnExercice extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btrefresh)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE))))
                 .addContainerGap())
         );
 
@@ -156,26 +182,77 @@ public class FnExercice extends javax.swing.JFrame {
     }//GEN-LAST:event_btretourmenuActionPerformed
 
     private void btnewexerciceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnewexerciceActionPerformed
-       
+       User u = new User();
+        u=FnConnexion.member;
         
-      /*  int tps = (Integer)comboTempsexercice.getSelectedItem();
+       int tps = (Integer)comboTempsexercice.getSelectedItem();
         String type = (String)comboTypeexercice.getSelectedItem();
         
         Exercice newex = new Exercice();
        newex.setTemps(tps);
        newex.setType(type);
-      
+        
         try {
-            ExerciceDao.addExercice(newex);
+            ExerciceDao.addExercice(u, newex);
             JOptionPane.showMessageDialog(rootPane, "Ajout de poids réussi !");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
-        }  */
+        }  
     }//GEN-LAST:event_btnewexerciceActionPerformed
 
     private void comboTempsexerciceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboTempsexerciceActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_comboTempsexerciceActionPerformed
+
+    private void btrefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btrefreshActionPerformed
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Date");
+        model.addColumn("Type");
+        model.addColumn("Temps");
+        
+        
+        try {
+            List<Exercice> exercices = ExerciceDao.getMyExos(FnConnexion.member);
+            for (Exercice exercice : exercices) {
+                model.addRow(new Object[]{
+                    exercice.getDate(), 
+                    exercice.getType(),
+                    exercice.getTemps(),
+                    
+                } );
+                
+            }
+            
+            tableexercice.setModel(model);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e.getMessage());
+        } 
+    }//GEN-LAST:event_btrefreshActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Date");
+        model.addColumn("Type");
+        model.addColumn("Temps");
+        
+        
+        try {
+            List<Exercice> exercices = ExerciceDao.getMyExos(FnConnexion.member);
+            for (Exercice exercice : exercices) {
+                model.addRow(new Object[]{
+                    exercice.getDate(), 
+                    exercice.getType(),
+                    exercice.getTemps(),
+                    
+                } );
+                
+            }
+            
+            tableexercice.setModel(model);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e.getMessage());
+        }
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -214,6 +291,7 @@ public class FnExercice extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnewexercice;
+    private javax.swing.JButton btrefresh;
     private javax.swing.JButton btretourmenu;
     private javax.swing.JComboBox<String> comboTempsexercice;
     private javax.swing.JComboBox<String> comboTypeexercice;

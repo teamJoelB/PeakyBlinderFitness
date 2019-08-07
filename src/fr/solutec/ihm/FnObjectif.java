@@ -188,7 +188,7 @@ public class FnObjectif extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnewobjectifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnewobjectifActionPerformed
-       /*  User u = new User();
+        User u = new User();
         u=FnConnexion.member;
        
        int poids = (Integer)spinnerpoidcible.getValue();
@@ -219,7 +219,7 @@ public class FnObjectif extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Ajout d'objectif réussi !");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
-        }       */
+        }       
     }//GEN-LAST:event_btnewobjectifActionPerformed
 
     private void btretourmenuprincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btretourmenuprincipalActionPerformed
