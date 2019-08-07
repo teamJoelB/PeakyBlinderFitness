@@ -17,5 +17,5 @@ import java.util.List;
  * @author ESIC
  */
 public class UserDao {
-    
+   
 }

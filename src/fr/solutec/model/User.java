@@ -10,5 +10,9 @@ package fr.solutec.model;
  * @author ESIC
  */
 public class User {
-    
+    private int id;
+    private String nom;
+    private String prenom;
+    private String m;
+    private String nom;
 }
