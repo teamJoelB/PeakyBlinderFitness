@@ -5,6 +5,9 @@
  */
 package fr.solutec.ihm;
 
+import fr.solutec.dao.UserDao;
+import fr.solutec.model.User;
+
 /**
  *
  * @author ESIC
@@ -121,7 +124,7 @@ public class FnConnexion extends javax.swing.JFrame {
     }//GEN-LAST:event_btInscriptionActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        /* String login = txtlogin.getText();
+        /* String login = txtLogin.getText();
         String mdp = txtmdp.getText();
         
         try {
@@ -130,7 +133,7 @@ public class FnConnexion extends javax.swing.JFrame {
             if(member != null){
            // JOptionPane.showMessageDialog(rootPane, "Connexion réussie");
            
-           FnPrincipale fnP = new FnPrincipale(member);
+           FnPrincipale fnP = new FnPrincipale();
            fnP.setVisible(true);
            this.setVisible(false);
         } else {
