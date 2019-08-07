@@ -17,15 +17,10 @@ import java.util.List;
  * @author ESIC
  */
 public class PoidsDao {
-    public static Poids addPoid(String mail, String mdp) throws SQLException {
-        Poids p = null;
-        
-      
-        
-        
-        return p;
+    public static void addPoids (User user) throws SQLException {
+        String sql = "INSERT INTO ";
+                
 }
     
   }
        
-
