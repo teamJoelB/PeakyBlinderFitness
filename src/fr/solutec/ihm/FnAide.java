@@ -26,18 +26,14 @@ public class FnAide extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         btretourmenu = new javax.swing.JButton();
+        scrollaide = new javax.swing.JComboBox<>();
+        lab1stconnect = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setText("\t\t\t\t\tAide :\n\nblablablzablalblablablablablabla");
-        jScrollPane1.setViewportView(jTextArea1);
 
         btretourmenu.setText("Retourner au menu principal");
         btretourmenu.addActionListener(new java.awt.event.ActionListener() {
@@ -46,54 +42,100 @@ public class FnAide extends javax.swing.JFrame {
             }
         });
 
+        scrollaide.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Première connection", "Se connecter", "Ajouter un poids", "Ajouter un exercice", "Ajouter un objectif", "Modifier mon profil" }));
+
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, lab1stconnect, org.jdesktop.beansbinding.ObjectProperty.create(), scrollaide, org.jdesktop.beansbinding.BeanProperty.create("elements"));
+        bindingGroup.addBinding(binding);
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, lab1stconnect, org.jdesktop.beansbinding.ObjectProperty.create(), scrollaide, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        bindingGroup.addBinding(binding);
+
+        scrollaide.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                scrollaideItemStateChanged(evt);
+            }
+        });
+
+        lab1stconnect.setText("S'il s'agit de votre première connection, alors cliquez sur le bouton inscription du Menu principal.");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1096, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(scrollaide, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lab1stconnect))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(228, 228, 228)
                         .addComponent(btretourmenu)))
-                .addContainerGap())
+                .addContainerGap(629, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addGap(28, 28, 28)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(scrollaide, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lab1stconnect, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
                 .addComponent(btretourmenu)
-                .addGap(14, 14, 14))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        bindingGroup.bind();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btretourmenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btretourmenuActionPerformed
         FnPrincipale fnP = new FnPrincipale();
-           fnP.setVisible(true);
-           this.setVisible(false);
+        fnP.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btretourmenuActionPerformed
+
+    private void scrollaideItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_scrollaideItemStateChanged
+       
+        
+        if (((String)scrollaide.getSelectedItem()).equals("Première connection")){
+            lab1stconnect.setText("S'il s'agit de votre première connection, alors cliquez sur le bouton inscription du Menu principal.");
+        }
+        if (((String)scrollaide.getSelectedItem()).equals("Ajouter un poids")){
+           lab1stconnect.setText("SRubrique poids => ajouter un poids");
+        }
+        if (((String)scrollaide.getSelectedItem()).equals("Ajouter un exercice")){
+           lab1stconnect.setText("Rubrique exercice => ajouter un exercice");
+        }
+        if (((String)scrollaide.getSelectedItem()).equals("Ajouter un objectif")){
+            lab1stconnect.setText("Rubrique Objectif => ajouter un objectif.");
+        }
+        if (((String)scrollaide.getSelectedItem()).equals("Modifier mon profil")){
+            lab1stconnect.setText("Pour modificer votre profil, rubrique mon profil => modifier mon profil");
+        }
+        if (((String)scrollaide.getSelectedItem()).equals("Se connecter")){
+            lab1stconnect.setText("C'est pas si compliqué, si???");
+        }
+        
+       /*Première connection
+
+Ajouter un poids
+Ajouter un exercice
+Ajouter un objectif
+Modifier mon profil*/
+    }//GEN-LAST:event_scrollaideItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -133,7 +175,8 @@ public class FnAide extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btretourmenu;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel lab1stconnect;
+    private javax.swing.JComboBox<String> scrollaide;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }
