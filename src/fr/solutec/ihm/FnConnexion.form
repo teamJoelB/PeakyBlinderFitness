@@ -112,11 +112,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Connexion"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btInscription">
           <Properties>
             <Property name="text" type="java.lang.String" value="Inscription"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btInscriptionActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

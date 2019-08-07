@@ -28,49 +28,76 @@ public class FnPrincipale extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        btProfil = new javax.swing.JButton();
+        btdeconnexion = new javax.swing.JButton();
+        btObjectif = new javax.swing.JButton();
+        btMenupoids = new javax.swing.JButton();
+        btexercice = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        labeltypeobjectif = new javax.swing.JLabel();
+        labelpoidcible = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        labeldateexercice = new javax.swing.JLabel();
+        labeltempsexercice = new javax.swing.JLabel();
+        labeltypeexercice = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        btAide = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Profil");
-
-        jButton2.setText("Déconnexion");
-
-        jButton3.setText("Mes Objectifs");
-
-        jButton4.setText("Evolution de mon poids");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btProfil.setText("Profil");
+        btProfil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btProfilActionPerformed(evt);
             }
         });
 
-        jButton5.setText("Mes exercices");
+        btdeconnexion.setText("Déconnexion");
+
+        btObjectif.setText("Mes Objectifs");
+        btObjectif.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btObjectifActionPerformed(evt);
+            }
+        });
+
+        btMenupoids.setText("Evolution de mon poids");
+        btMenupoids.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btMenupoidsActionPerformed(evt);
+            }
+        });
+
+        btexercice.setText("Mes exercices");
+        btexercice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btexerciceActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Objectif de la semaine :");
 
-        jLabel2.setText("// Afficher TypeObjectif");
+        labeltypeobjectif.setText("// Afficher TypeObjectif");
 
-        jLabel3.setText("// Afficher PoidsCible");
+        labelpoidcible.setText("// Afficher PoidsCible");
 
         jLabel4.setText("Dernier exercice effectué :");
 
-        jLabel5.setText("// Afficher DateExercice");
+        labeldateexercice.setText("// Afficher DateExercice");
 
-        jLabel6.setText("// Afficher TempsExerice");
+        labeltempsexercice.setText("// Afficher TempsExerice");
 
-        jLabel7.setText("// Afficher TypeExercice");
+        labeltypeexercice.setText("// Afficher TypeExercice");
+
+        jLabel2.setText("Bonjour ");
+
+        btAide.setText("Aide");
+        btAide.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAideActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -78,8 +105,17 @@ public class FnPrincipale extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(btdeconnexion)
                 .addGap(22, 22, 22))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(391, 391, 391)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btexercice)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btObjectif)
+                        .addGap(102, 102, 102)
+                        .addComponent(btMenupoids)))
+                .addGap(0, 347, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -87,44 +123,49 @@ public class FnPrincipale extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
+                                .addComponent(labeltypeobjectif)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel3))
+                                .addComponent(labelpoidcible))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel5))
+                                .addComponent(labeldateexercice))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
-                                .addComponent(jLabel7)
+                                .addComponent(labeltypeexercice)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel6))))
+                                .addComponent(labeltempsexercice))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(523, 523, 523)
-                        .addComponent(jButton1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(391, 391, 391)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton5)
+                        .addComponent(btProfil))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton3)
-                        .addGap(102, 102, 102)
-                        .addComponent(jButton4)))
-                .addGap(0, 347, Short.MAX_VALUE))
+                        .addGap(410, 410, 410)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btAide)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(121, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addContainerGap()
+                .addComponent(btAide)
+                .addGap(4, 4, 4)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addComponent(btProfil)
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
+                    .addComponent(btObjectif)
+                    .addComponent(btMenupoids))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton5)
+                    .addComponent(btexercice)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -132,18 +173,18 @@ public class FnPrincipale extends javax.swing.JFrame {
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                             .addGap(28, 28, 28)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(labeltypeobjectif, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(labelpoidcible, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(labeldateexercice, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(labeltempsexercice, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labeltypeexercice, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(82, 82, 82)
-                .addComponent(jButton2)
+                .addComponent(btdeconnexion)
                 .addGap(21, 21, 21))
         );
 
@@ -167,9 +208,35 @@ public class FnPrincipale extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void btMenupoidsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMenupoidsActionPerformed
+        FnPoids fnPo = new FnPoids();
+       this.setVisible(false);
+       fnPo.setVisible(true);
+    }//GEN-LAST:event_btMenupoidsActionPerformed
+
+    private void btAideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAideActionPerformed
+        FnAide fnA = new FnAide();
+       this.setVisible(false);
+       fnA.setVisible(true);
+    }//GEN-LAST:event_btAideActionPerformed
+
+    private void btProfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btProfilActionPerformed
+        FnProfil fnPr = new FnProfil();
+       this.setVisible(false);
+       fnPr.setVisible(true);
+    }//GEN-LAST:event_btProfilActionPerformed
+
+    private void btObjectifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btObjectifActionPerformed
+        FnObjectif fnO = new FnObjectif();
+       this.setVisible(false);
+       fnO.setVisible(true);
+    }//GEN-LAST:event_btObjectifActionPerformed
+
+    private void btexerciceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btexerciceActionPerformed
+        FnExercice fnE = new FnExercice();
+       this.setVisible(false);
+       fnE.setVisible(true);
+    }//GEN-LAST:event_btexerciceActionPerformed
 
     /**
      * @param args the command line arguments
@@ -207,18 +274,21 @@ public class FnPrincipale extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton btAide;
+    private javax.swing.JButton btMenupoids;
+    private javax.swing.JButton btObjectif;
+    private javax.swing.JButton btProfil;
+    private javax.swing.JButton btdeconnexion;
+    private javax.swing.JButton btexercice;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel labeldateexercice;
+    private javax.swing.JLabel labelpoidcible;
+    private javax.swing.JLabel labeltempsexercice;
+    private javax.swing.JLabel labeltypeexercice;
+    private javax.swing.JLabel labeltypeobjectif;
     // End of variables declaration//GEN-END:variables
 }
