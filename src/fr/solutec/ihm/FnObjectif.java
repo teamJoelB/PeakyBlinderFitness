@@ -22,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
  * @author ESIC
  */
 public class FnObjectif extends javax.swing.JFrame {
-
+public static Objectif objc = new Objectif();
     /**
      * Creates new form FnObjectif
      */
@@ -216,6 +216,7 @@ public class FnObjectif extends javax.swing.JFrame {
       
         try {
             ObjectifDao.addObjectif(u, newobj);
+            objc=newobj;
             JOptionPane.showMessageDialog(rootPane, "Ajout d'objectif réussi !");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
