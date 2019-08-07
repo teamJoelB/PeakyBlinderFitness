@@ -5,6 +5,10 @@
  */
 package fr.solutec.ihm;
 
+import fr.solutec.dao.ExerciceDao;
+import fr.solutec.model.Exercice;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ESIC
@@ -33,10 +37,6 @@ public class FnExercice extends javax.swing.JFrame {
         comboTypeexercice = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         comboTempsexercice = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
-        combojour = new javax.swing.JComboBox<>();
-        combomois = new javax.swing.JComboBox<>();
-        comboannée = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableexercice = new javax.swing.JTable();
@@ -44,6 +44,11 @@ public class FnExercice extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnewexercice.setText("Entrer un nouvel exercice");
+        btnewexercice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnewexerciceActionPerformed(evt);
+            }
+        });
 
         btretourmenu.setText("Retourner au menu principal");
         btretourmenu.addActionListener(new java.awt.event.ActionListener() {
@@ -57,14 +62,11 @@ public class FnExercice extends javax.swing.JFrame {
         jLabel1.setText("Pendant");
 
         comboTempsexercice.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "30", "60", "90", "120", "150", "180", "210", "240" }));
-
-        jLabel2.setText("Date : ");
-
-        combojour.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
-
-        combomois.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre" }));
-
-        comboannée.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2019", "2020", "2021", "2022" }));
+        comboTempsexercice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboTempsexerciceActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Minutes");
 
@@ -90,14 +92,6 @@ public class FnExercice extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnewexercice)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(combojour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(combomois, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(comboannée, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(comboTypeexercice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel1)
@@ -122,15 +116,13 @@ public class FnExercice extends javax.swing.JFrame {
                             .addComponent(comboTempsexercice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(combojour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(combomois, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(comboannée, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(btnewexercice)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btretourmenu))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(btretourmenu))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnewexercice)
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)))
@@ -162,6 +154,28 @@ public class FnExercice extends javax.swing.JFrame {
            fnP.setVisible(true);
            this.setVisible(false);
     }//GEN-LAST:event_btretourmenuActionPerformed
+
+    private void btnewexerciceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnewexerciceActionPerformed
+       
+        
+      /*  int tps = (Integer)comboTempsexercice.getSelectedItem();
+        String type = (String)comboTypeexercice.getSelectedItem();
+        
+        Exercice newex = new Exercice();
+       newex.setTemps(tps);
+       newex.setType(type);
+      
+        try {
+            ExerciceDao.addExercice(newex);
+            JOptionPane.showMessageDialog(rootPane, "Ajout de poids réussi !");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e.getMessage());
+        }  */
+    }//GEN-LAST:event_btnewexerciceActionPerformed
+
+    private void comboTempsexerciceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboTempsexerciceActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboTempsexerciceActionPerformed
 
     /**
      * @param args the command line arguments
@@ -203,11 +217,7 @@ public class FnExercice extends javax.swing.JFrame {
     private javax.swing.JButton btretourmenu;
     private javax.swing.JComboBox<String> comboTempsexercice;
     private javax.swing.JComboBox<String> comboTypeexercice;
-    private javax.swing.JComboBox<String> comboannée;
-    private javax.swing.JComboBox<String> combojour;
-    private javax.swing.JComboBox<String> combomois;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

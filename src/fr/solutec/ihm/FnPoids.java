@@ -5,6 +5,11 @@
  */
 package fr.solutec.ihm;
 
+import fr.solutec.dao.PoidsDao;
+import fr.solutec.model.Poids;
+import java.util.Date;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ESIC
@@ -43,6 +48,11 @@ public class FnPoids extends javax.swing.JFrame {
         jLabel2.setText("kg");
 
         btnouveaupoids.setText("Entrer un nouveau poids");
+        btnouveaupoids.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnouveaupoidsActionPerformed(evt);
+            }
+        });
 
         btretourmenu.setText("Retourner au menu principal");
         btretourmenu.addActionListener(new java.awt.event.ActionListener() {
@@ -128,6 +138,23 @@ public class FnPoids extends javax.swing.JFrame {
            fnP.setVisible(true);
            this.setVisible(false);
     }//GEN-LAST:event_btretourmenuActionPerformed
+
+    private void btnouveaupoidsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnouveaupoidsActionPerformed
+       
+       /* 
+       int poids = (Integer)spinnernouveaupoid.getValue();
+       
+        Poids newpoids = new Poids();
+        
+       newpoids.setPoids(poids);
+      
+        try {
+            PoidsDao.addPoids(newpoids);
+            JOptionPane.showMessageDialog(rootPane, "Ajout de poids réussi !");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e.getMessage());
+        }  */      
+    }//GEN-LAST:event_btnouveaupoidsActionPerformed
 
     /**
      * @param args the command line arguments
