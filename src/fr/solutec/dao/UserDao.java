@@ -53,7 +53,7 @@ public class UserDao {
 
     public static void addUser(User user) throws SQLException {
         String sql = "INSERT INTO user (nomuser, prenomuser, mailuser, mdpuser, sexeuser, poidiniuser"
-                + "tailleuser,ageusuer) VALUES(?,?,?,?,?,?,?,?)";
+                + "tailleuser,ageuser) VALUES(?,?,?,?,?,?,?,?)";
         Connection connexion = AccessDAO.getConnection();
         PreparedStatement ordre = connexion.prepareStatement(sql);
 
