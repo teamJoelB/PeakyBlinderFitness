@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 07 août 2019 à 12:53
+-- Généré le :  mer. 07 août 2019 à 13:00
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `exercice` (
 DROP TABLE IF EXISTS `objectif`;
 CREATE TABLE IF NOT EXISTS `objectif` (
   `idobjectif` int(11) NOT NULL AUTO_INCREMENT,
-  `dateobjectif` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `dateobjectif` date NOT NULL,
   `typeobjectif` varchar(45) NOT NULL,
   `deltapoid` double NOT NULL,
   `user_iduser` int(11) NOT NULL,
