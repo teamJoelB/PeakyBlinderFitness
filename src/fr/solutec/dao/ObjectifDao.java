@@ -19,16 +19,17 @@ import java.sql.SQLException;
 public class ObjectifDao {
     public static void addObjectif (User user, Objectif obj) throws SQLException {
         
-        String sql = "INSERT INTO objectif (dateobjectif, typeobjectif,deltapoid) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO objectif (dateobjectif, typeobjectif,deltapoid) VALUES (?,?,?)";
         
         Connection connexion = AccessDAO.getConnection();
 
         PreparedStatement ordre = connexion.prepareStatement(sql);
 
-        //ordre.setDouble(1, obj.getDate());
+        ordre.setDate(1, obj.getDate());
         ordre.setString(2, obj.getType());
         ordre.setDouble(3, obj.getDelta());
         
+        ordre.execute();
 
     }
     

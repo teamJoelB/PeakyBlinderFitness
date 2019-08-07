@@ -30,7 +30,7 @@ public class PoidsDao {
 
         ordre.setDouble(1, poids.getPoids());
         ordre.setInt(2, user.getId());
-
+        ordre.execute();
     }
 
     public static List<Poids> getMyPoids(User user) throws SQLException {
