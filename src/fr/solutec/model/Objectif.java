@@ -15,17 +15,17 @@ public class Objectif {
     private int id;
     private Date date;
     private String type;
-    private  double detla;
+    private  double delta;
     private User user;
 
     public Objectif() {
     }
 
-    public Objectif(int id, Date date, String type, double detla, User user) {
+    public Objectif(int id, Date date, String type, double delta, User user) {
         this.id = id;
         this.date = date;
         this.type = type;
-        this.detla = detla;
+        this.delta = delta;
         this.user = user;
     }
 
@@ -41,8 +41,8 @@ public class Objectif {
         return type;
     }
 
-    public double getDetla() {
-        return detla;
+    public double getDelta() {
+        return delta;
     }
 
     public User getUser() {
@@ -62,7 +62,7 @@ public class Objectif {
     }
 
     public void setDetla(double detla) {
-        this.detla = detla;
+        this.delta = detla;
     }
 
     public void setUser(User user) {
@@ -71,7 +71,7 @@ public class Objectif {
 
     @Override
     public String toString() {
-        return "Objectif{" + "id=" + id + ", date=" + date + ", type=" + type + ", detla=" + detla + ", user=" + user + '}';
+        return "Objectif{" + "id=" + id + ", date=" + date + ", type=" + type + ", detla=" + delta + ", user=" + user + '}';
     }
     
     
