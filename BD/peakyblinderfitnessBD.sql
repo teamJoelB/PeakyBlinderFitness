@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 07 août 2019 à 09:16
+-- Généré le :  mer. 07 août 2019 à 10:19
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -69,6 +69,7 @@ CREATE TABLE IF NOT EXISTS `poid` (
   `idpoid` int(11) NOT NULL AUTO_INCREMENT,
   `datepoid` date DEFAULT NULL,
   `user_iduser` int(11) NOT NULL,
+  `valeurpoid` varchar(45) NOT NULL,
   PRIMARY KEY (`idpoid`),
   KEY `fk_poid_user1_idx` (`user_iduser`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
