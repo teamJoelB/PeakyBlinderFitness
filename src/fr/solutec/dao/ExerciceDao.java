@@ -25,7 +25,7 @@ public class ExerciceDao {
     
         public static void addExercice (User user, Exercice exo) throws SQLException {
         
-        String sql = "INSERT INTO exercice (typeexercice, tempsexercice,user_iduser) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO exercice (typeexercice, tempsexercice,user_iduser) VALUES (?,?,?)";
         
         Connection connexion = AccessDAO.getConnection();
 
