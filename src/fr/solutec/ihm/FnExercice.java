@@ -18,6 +18,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class FnExercice extends javax.swing.JFrame {
 
+    public static Exercice e = new Exercice();
+            
     /**
      * Creates new form FnExercice
      */
@@ -66,7 +68,7 @@ public class FnExercice extends javax.swing.JFrame {
             }
         });
 
-        comboTypeexercice.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Marche", "Course", "Sport Individul", "Sport d'équipe" }));
+        comboTypeexercice.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Marche", "Course", "Sport Individuel", "Sport d'équipe" }));
 
         jLabel1.setText("Pendant");
 
@@ -113,7 +115,7 @@ public class FnExercice extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 140, Short.MAX_VALUE)
+                        .addGap(0, 135, Short.MAX_VALUE)
                         .addComponent(btretourmenu))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btrefresh)
@@ -187,9 +189,11 @@ public class FnExercice extends javax.swing.JFrame {
         
         try {
             ExerciceDao.addExercice(u, newex);
+            e=newex;
             JOptionPane.showMessageDialog(rootPane, "Ajout d'exercice réussi !");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
+            
         }  
     }//GEN-LAST:event_btnewexerciceActionPerformed
 
