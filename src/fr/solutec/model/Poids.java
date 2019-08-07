@@ -13,14 +13,16 @@ import java.util.Date;
  */
 public class Poids {
     private int id;
+    private double poids;
     private Date date;
     private User user;   
 
     public Poids() {
     }
 
-    public Poids(int id, Date date, User user) {
+    public Poids(int id, double poids, Date date, User user) {
         this.id = id;
+        this.poids = poids;
         this.date = date;
         this.user = user;
     }
@@ -29,20 +31,28 @@ public class Poids {
         return id;
     }
 
-    public Date getDate() {
-        return date;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
     public void setId(int id) {
         this.id = id;
     }
 
+    public double getPoids() {
+        return poids;
+    }
+
+    public void setPoids(double poids) {
+        this.poids = poids;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public User getUser() {
+        return user;
     }
 
     public void setUser(User user) {
@@ -51,10 +61,10 @@ public class Poids {
 
     @Override
     public String toString() {
-        return "Poids{" + "id=" + id + ", date=" + date + ", user=" + user + '}';
+        return "Poids{" + "id=" + id + ", poids=" + poids + ", date=" + date + ", user=" + user + '}';
     }
 
     
-       
+    
 }
 
