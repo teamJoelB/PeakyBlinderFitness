@@ -25,7 +25,7 @@ public class ExerciceDao {
     
         public static void addExercice (User user, Exercice exo) throws SQLException {
         
-        String sql = "INSERT INTO exercice (typeexercice, tempsexercice, dateexercice,user_iduser) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO exercice (typeexercice, tempsexercice,user_iduser) VALUES (?,?,?,?)";
         
         Connection connexion = AccessDAO.getConnection();
 
@@ -33,8 +33,8 @@ public class ExerciceDao {
 
         ordre.setString(1, exo.getType());
         ordre.setInt(2, exo.getTemps());
-        ordre.setDate(3, exo.getDate());
-        ordre.setInt(4, user.getId());
+        //ordre.setDate(3, exo.getDate());
+        ordre.setInt(3, user.getId());
        
         ordre.execute();
 
