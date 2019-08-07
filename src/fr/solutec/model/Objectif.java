@@ -61,8 +61,8 @@ public class Objectif {
         this.type = type;
     }
 
-    public void setDetla(double detla) {
-        this.delta = detla;
+    public void setDelta(double delta) {
+        this.delta = delta;
     }
 
     public void setUser(User user) {
