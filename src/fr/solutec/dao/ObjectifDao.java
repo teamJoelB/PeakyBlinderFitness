@@ -58,11 +58,7 @@ public class ObjectifDao {
             result.add(o);
         }
         
-        /*  private int id;
-    private Date date;
-    private String type;
-    private  double delta;
-    private User user;*/
+
         
         
         return result;
