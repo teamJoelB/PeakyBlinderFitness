@@ -24,20 +24,3 @@ public class PoidsDao {
     
   }
        
- public static void addUser(User user) throws SQLException {
-        String sql = "INSERT INTO user (nomuser, prenomuser, mailuser, mdpuser, sexeuser, poidiniuser"
-                + "tailleuser,ageuser) VALUES(?,?,?,?,?,?,?,?)";
-        Connection connexion = AccessDAO.getConnection();
-        PreparedStatement ordre = connexion.prepareStatement(sql);
-
-        ordre.setString(1, user.getNom());
-        ordre.setString(2, user.getPrenom());
-        ordre.setString(3, user.getMail());
-        ordre.setString(4, user.getMdp());
-        ordre.setString(5, user.getSexe());
-        ordre.setDouble(6, user.getPoid());
-        ordre.setInt(7, user.getTaille());
-        ordre.setInt(8, user.getAge());
-
-        ordre.execute();
-    }
