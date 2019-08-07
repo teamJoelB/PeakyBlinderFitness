@@ -36,7 +36,7 @@ public class PoidsDao {
     public static List<Poids> getMyPoids(User user) throws SQLException {
         List<Poids> result = new ArrayList<>();
 
-        String sql = "SELECT * FROM poid WHERE id_iduser=?";
+        String sql = "SELECT * FROM poid WHERE user_iduser=?";
 
         Connection connexion = AccessDAO.getConnection();
         PreparedStatement requette = connexion.prepareStatement(sql);
