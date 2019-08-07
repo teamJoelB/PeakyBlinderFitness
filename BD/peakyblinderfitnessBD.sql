@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 07 août 2019 à 11:21
+-- Généré le :  mer. 07 août 2019 à 12:53
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `exercice` (
   `idexercice` int(11) NOT NULL AUTO_INCREMENT,
   `typeexercice` varchar(45) NOT NULL,
   `tempsexercice` int(11) NOT NULL,
-  `dateexercice` varchar(45) NOT NULL,
+  `dateexercice` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `user_iduser` int(11) NOT NULL,
   PRIMARY KEY (`idexercice`),
   KEY `fk_exercice_user1_idx` (`user_iduser`)
@@ -93,7 +93,16 @@ CREATE TABLE IF NOT EXISTS `user` (
   `mailuser` varchar(45) NOT NULL,
   PRIMARY KEY (`iduser`),
   UNIQUE KEY `mailuser_UNIQUE` (`mailuser`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `user`
+--
+
+INSERT INTO `user` (`iduser`, `nomuser`, `prenomuser`, `mdpuser`, `sexeuser`, `poidiniuser`, `tailleuser`, `ageuser`, `mailuser`) VALUES
+(1, 'test', 'test', 'test', 'homme', 1, 1, 1, 'test'),
+(2, '1', '1', '1', 'Non-binaire', 1, 1, 1, '1'),
+(3, '2', '2', '2', 'Femme', 2, 2, 2, 'onche');
 
 --
 -- Contraintes pour les tables déchargées
