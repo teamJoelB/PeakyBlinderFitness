@@ -5,6 +5,13 @@
  */
 package fr.solutec.ihm;
 
+import fr.solutec.dao.ObjectifDao;
+import fr.solutec.model.Objectif;
+import fr.solutec.model.User;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ESIC
@@ -34,8 +41,15 @@ public class FnObjectif extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableobjectif = new javax.swing.JTable();
+        combotype = new javax.swing.JComboBox<>();
+        btrefresh = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         btnewobjectif.setText("Entrer un nouvel objectif hebdomadaire");
         btnewobjectif.addActionListener(new java.awt.event.ActionListener() {
@@ -66,29 +80,54 @@ public class FnObjectif extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tableobjectif);
 
+        combotype.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Perdre", "Gagner" }));
+        combotype.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combotypeActionPerformed(evt);
+            }
+        });
+
+        btrefresh.setText("Rafraichir");
+        btrefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btrefreshActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(spinnerpoidcible, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnewobjectif)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(spinnerpoidcible, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnewobjectif))
+                    .addComponent(combotype, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
-                .addComponent(btretourmenuprincipal)
-                .addContainerGap())
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
+                        .addComponent(btretourmenuprincipal)
+                        .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btrefresh)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
+                        .addGap(25, 25, 25)
+                        .addComponent(combotype, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnewobjectif)
                             .addComponent(spinnerpoidcible, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -97,7 +136,11 @@ public class FnObjectif extends javax.swing.JFrame {
                         .addComponent(btretourmenuprincipal))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btrefresh)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE))))
                 .addContainerGap())
         );
 
@@ -122,7 +165,23 @@ public class FnObjectif extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnewobjectifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnewobjectifActionPerformed
-        // TODO add your handling code here:
+         User u = new User();
+        u=FnConnexion.member;
+       
+       int poids = (Integer)spinnerpoidcible.getValue();
+       String type = (String)combotype.getSelectedItem();
+       
+        Objectif newobj = new Objectif();
+        
+       newobj.setDelta(poids);
+       newobj.setType(type);
+      
+        try {
+            ObjectifDao.addObjectif(u, newobj);
+            JOptionPane.showMessageDialog(rootPane, "Ajout d'objectif réussi !");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e.getMessage());
+        }       
     }//GEN-LAST:event_btnewobjectifActionPerformed
 
     private void btretourmenuprincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btretourmenuprincipalActionPerformed
@@ -130,6 +189,60 @@ public class FnObjectif extends javax.swing.JFrame {
            fnP.setVisible(true);
            this.setVisible(false);
     }//GEN-LAST:event_btretourmenuprincipalActionPerformed
+
+    private void combotypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combotypeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_combotypeActionPerformed
+
+    private void btrefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btrefreshActionPerformed
+        /* DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Date");
+        model.addColumn("Type");
+        model.addColumn("Delta Poids");
+        
+        
+        try {
+            List<Objectif> objectifs = ObjectifDao.getMyObjectifs(FnConnexion.member);
+            for (Objectif objectif : objectifs) {
+                model.addRow(new Object[]{
+                    objectif.getDate(), 
+                    objectif.getType(),
+                    objectif.getDelta(),
+                    
+                } );
+                
+            }
+            
+            tableobjectif.setModel(model);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e.getMessage());
+        } */
+    }//GEN-LAST:event_btrefreshActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+       /* DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Date");
+        model.addColumn("Type");
+        model.addColumn("Delta Poids");
+        
+        
+        try {
+            List<Objectif> objectifs = ObjectifDao.getMyObjectifs(FnConnexion.member);
+            for (Objectif objectif : objectifs) {
+                model.addRow(new Object[]{
+                    objectif.getDate(), 
+                    objectif.getType(),
+                    objectif.getDelta(),
+                    
+                } );
+                
+            }
+            
+            tableobjectif.setModel(model);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e.getMessage());
+        } */
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -168,7 +281,9 @@ public class FnObjectif extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnewobjectif;
+    private javax.swing.JButton btrefresh;
     private javax.swing.JButton btretourmenuprincipal;
+    private javax.swing.JComboBox<String> combotype;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
