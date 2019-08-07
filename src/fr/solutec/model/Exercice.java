@@ -5,8 +5,7 @@
  */
 package fr.solutec.model;
 
-import java.util.Date;
-
+import java.sql.Date;
 /**
  *
  * @author ESIC
