@@ -52,7 +52,7 @@
                       <Group type="102" attributes="0">
                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="labelmail" min="-2" pref="102" max="-2" attributes="0"/>
+                          <Component id="txtMail" min="-2" pref="102" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -61,8 +61,8 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="labelnom" min="-2" pref="102" max="-2" attributes="0"/>
-                              <Component id="labelprenom" min="-2" pref="102" max="-2" attributes="0"/>
+                              <Component id="txtNom" min="-2" pref="102" max="-2" attributes="0"/>
+                              <Component id="txtPrenom" min="-2" pref="102" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" attributes="0">
@@ -72,8 +72,8 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="labeltaill" alignment="0" min="-2" pref="102" max="-2" attributes="0"/>
-                              <Component id="labelpoids" alignment="0" min="-2" pref="102" max="-2" attributes="0"/>
+                              <Component id="txtTaille" alignment="0" min="-2" pref="102" max="-2" attributes="0"/>
+                              <Component id="txtPoids" alignment="0" min="-2" pref="102" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" attributes="0">
@@ -83,9 +83,9 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="labelage" min="-2" pref="102" max="-2" attributes="0"/>
+                              <Component id="txtAge" min="-2" pref="102" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="labelsexe" min="-2" pref="102" max="-2" attributes="0"/>
+                                  <Component id="txtSexe" min="-2" pref="102" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="250" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="btretourmenu" min="-2" max="-2" attributes="0"/>
@@ -105,12 +105,12 @@
                   <EmptySpace min="-2" pref="125" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel1" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                      <Component id="labelnom" alignment="3" max="32767" attributes="0"/>
+                      <Component id="txtNom" alignment="3" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel2" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                      <Component id="labelprenom" alignment="3" max="32767" attributes="0"/>
+                      <Component id="txtPrenom" alignment="3" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -120,19 +120,24 @@
                           <Component id="jLabel6" min="-2" pref="24" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
-                          <Component id="labeltaill" max="32767" attributes="0"/>
+                          <Component id="txtTaille" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="labelpoids" max="32767" attributes="0"/>
+                          <Component id="txtPoids" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="labelage" max="32767" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="labelsexe" alignment="3" max="32767" attributes="0"/>
-                              <Component id="btmodifprofil" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                  <Component id="btmodifprofil" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="txtAge" max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="txtSexe" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
                           <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                       </Group>
@@ -145,11 +150,11 @@
                   </Group>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel3" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                      <Component id="labelmail" alignment="3" max="32767" attributes="0"/>
+                      <Component id="txtMail" alignment="3" pref="28" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                   <Component id="btretourmenu" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="110" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -190,40 +195,19 @@
             <Property name="text" type="java.lang.String" value="E-mail : "/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="labelprenom">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jLabel4"/>
-          </Properties>
+        <Component class="javax.swing.JLabel" name="txtPrenom">
         </Component>
-        <Component class="javax.swing.JLabel" name="labelnom">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jLabel4"/>
-          </Properties>
+        <Component class="javax.swing.JLabel" name="txtNom">
         </Component>
-        <Component class="javax.swing.JLabel" name="labelpoids">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jLabel4"/>
-          </Properties>
+        <Component class="javax.swing.JLabel" name="txtPoids">
         </Component>
-        <Component class="javax.swing.JLabel" name="labeltaill">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jLabel4"/>
-          </Properties>
+        <Component class="javax.swing.JLabel" name="txtTaille">
         </Component>
-        <Component class="javax.swing.JLabel" name="labelmail">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jLabel4"/>
-          </Properties>
+        <Component class="javax.swing.JLabel" name="txtMail">
         </Component>
-        <Component class="javax.swing.JLabel" name="labelage">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jLabel4"/>
-          </Properties>
+        <Component class="javax.swing.JLabel" name="txtAge">
         </Component>
-        <Component class="javax.swing.JLabel" name="labelsexe">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jLabel4"/>
-          </Properties>
+        <Component class="javax.swing.JLabel" name="txtSexe">
         </Component>
         <Component class="javax.swing.JButton" name="btmodifprofil">
           <Properties>
