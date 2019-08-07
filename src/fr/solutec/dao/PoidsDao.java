@@ -17,7 +17,7 @@ import java.util.List;
  * @author ESIC
  */
 public class PoidsDao {
-    public static void addPoid (User user) throws SQLException {
+    public static void addPoids (User user) throws SQLException {
         String sql = "INSERT INTO ";
                 
 }
