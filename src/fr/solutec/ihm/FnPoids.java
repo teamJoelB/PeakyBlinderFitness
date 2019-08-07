@@ -43,7 +43,7 @@ public class FnPoids extends javax.swing.JFrame {
         btretourmenu = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablepoids = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        btrefresh = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -83,7 +83,12 @@ public class FnPoids extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tablepoids);
 
-        jButton1.setText("jButton1");
+        btrefresh.setText("Rafraichir");
+        btrefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btrefreshActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -107,7 +112,7 @@ public class FnPoids extends javax.swing.JFrame {
                         .addGap(0, 207, Short.MAX_VALUE)
                         .addComponent(btretourmenu))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(btrefresh)
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -128,7 +133,7 @@ public class FnPoids extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton1)
+                                .addComponent(btrefresh)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE))))
                 .addContainerGap())
@@ -202,6 +207,29 @@ public class FnPoids extends javax.swing.JFrame {
         } 
     }//GEN-LAST:event_formWindowOpened
 
+    private void btrefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btrefreshActionPerformed
+         DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Date");
+        model.addColumn("Poids");
+        
+        
+        try {
+            List<Poids> poidss = PoidsDao.getMyPoids(FnConnexion.member);
+            for (Poids poids : poidss) {
+                model.addRow(new Object[]{
+                    poids.getDate(), 
+                    poids.getPoids(),
+                    
+                } );
+                
+            }
+            
+            tablepoids.setModel(model);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e.getMessage());
+        } 
+    }//GEN-LAST:event_btrefreshActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -239,8 +267,8 @@ public class FnPoids extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnouveaupoids;
+    private javax.swing.JButton btrefresh;
     private javax.swing.JButton btretourmenu;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
