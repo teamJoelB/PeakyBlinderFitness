@@ -5,6 +5,14 @@
  */
 package fr.solutec.ihm;
 
+import fr.solutec.dao.PoidsDao;
+import fr.solutec.model.Poids;
+import fr.solutec.model.User;
+import java.util.Date;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ESIC
@@ -35,14 +43,25 @@ public class FnPoids extends javax.swing.JFrame {
         btretourmenu = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablepoids = new javax.swing.JTable();
+        btrefresh = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel1.setText("Nouveau Poids :");
 
         jLabel2.setText("kg");
 
         btnouveaupoids.setText("Entrer un nouveau poids");
+        btnouveaupoids.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnouveaupoidsActionPerformed(evt);
+            }
+        });
 
         btretourmenu.setText("Retourner au menu principal");
         btretourmenu.addActionListener(new java.awt.event.ActionListener() {
@@ -64,6 +83,13 @@ public class FnPoids extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tablepoids);
 
+        btrefresh.setText("Rafraichir");
+        btrefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btrefreshActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -80,8 +106,14 @@ public class FnPoids extends javax.swing.JFrame {
                         .addComponent(jLabel2)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 219, Short.MAX_VALUE)
-                .addComponent(btretourmenu))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 207, Short.MAX_VALUE)
+                        .addComponent(btretourmenu))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btrefresh)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -99,7 +131,11 @@ public class FnPoids extends javax.swing.JFrame {
                         .addComponent(btretourmenu))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btrefresh)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE))))
                 .addContainerGap())
         );
 
@@ -128,6 +164,71 @@ public class FnPoids extends javax.swing.JFrame {
            fnP.setVisible(true);
            this.setVisible(false);
     }//GEN-LAST:event_btretourmenuActionPerformed
+
+    private void btnouveaupoidsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnouveaupoidsActionPerformed
+       
+        User u = new User();
+        u=FnConnexion.member;
+       
+       int poids = (Integer)spinnernouveaupoid.getValue();
+       
+        Poids newpoids = new Poids();
+        
+       newpoids.setPoids(poids);
+      
+        try {
+            PoidsDao.addPoids(u, newpoids);
+            JOptionPane.showMessageDialog(rootPane, "Ajout de poids réussi !");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e.getMessage());
+        }       
+    }//GEN-LAST:event_btnouveaupoidsActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Date");
+        model.addColumn("Poids");
+        
+        
+        try {
+            List<Poids> poidss = PoidsDao.getMyPoids(FnConnexion.member);
+            for (Poids poids : poidss) {
+                model.addRow(new Object[]{
+                    poids.getDate(), 
+                    poids.getPoids(),
+                    
+                } );
+                
+            }
+            
+            tablepoids.setModel(model);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e.getMessage());
+        } 
+    }//GEN-LAST:event_formWindowOpened
+
+    private void btrefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btrefreshActionPerformed
+         DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Date");
+        model.addColumn("Poids");
+        
+        
+        try {
+            List<Poids> poidss = PoidsDao.getMyPoids(FnConnexion.member);
+            for (Poids poids : poidss) {
+                model.addRow(new Object[]{
+                    poids.getDate(), 
+                    poids.getPoids(),
+                    
+                } );
+                
+            }
+            
+            tablepoids.setModel(model);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e.getMessage());
+        } 
+    }//GEN-LAST:event_btrefreshActionPerformed
 
     /**
      * @param args the command line arguments
@@ -166,6 +267,7 @@ public class FnPoids extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnouveaupoids;
+    private javax.swing.JButton btrefresh;
     private javax.swing.JButton btretourmenu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

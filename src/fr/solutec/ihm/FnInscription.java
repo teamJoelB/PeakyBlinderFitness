@@ -231,18 +231,28 @@ public class FnInscription extends javax.swing.JFrame {
     }//GEN-LAST:event_btconnexionActionPerformed
 
     private void btInscriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInscriptionActionPerformed
-         String nom = txtNom.getText();
+       String nom = txtNom.getText();
        String prenom = txtPrenom.getText();
        String login = txtmail.getText();
        String mdp = txtpassword.getText();
-       int age = Integer.parseInt(txtAge.getText());
-       int taille = Integer.parseInt(txtTaille.getText());
-       double poids = Double.parseDouble(txtPoidsInitial.getText());
+       int age=0;
+       int taille=0;
+       double poids=0;
+       
+       try{
+       age = Integer.parseInt(txtAge.getText());
+       taille = Integer.parseInt(txtTaille.getText());
+       poids = Double.parseDouble(txtPoidsInitial.getText());}
+       catch (Exception e){
+           JOptionPane.showMessageDialog(rootPane, e.getMessage());
+       }
        String sexe = (String)comboSexe.getSelectedItem();
        
-      
-        User u = new User();
-        
+       User u = new User();
+       
+        if(nom!="" && prenom!="" && login!="" && mdp!="" && age!=0 && taille!=0 && poids!=0){
+          
+                
        u.setNom(nom);
        u.setPrenom(prenom);
        u.setMail(login);
@@ -251,6 +261,12 @@ public class FnInscription extends javax.swing.JFrame {
        u.setPoid(poids);
        u.setTaille(taille);
        u.setAge(age);
+            
+        
+}
+        
+        
+       
        
        
         try {
